@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Propuesta de portafolio: backend, infraestructura y una mirada al interior del software.">
+  <title>El software, por dentro — propuesta de portafolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="diagrams.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header shell">
+    <a class="identity" href="#contenido" aria-label="Volver al inicio"><span class="identity-mark" aria-hidden="true">{ }</span><span>Tu nombre<small>Ingeniero de Software</small></span></a>
+    <nav aria-label="Principal"><a href="#proyecto">Proyecto</a><a href="#enfoque">Enfoque</a><a href="#credencial">Credencial</a></nav>
+    <a class="header-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="contenido">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">El software,<br><span>por dentro.</span></h1>
+        <p class="intro">Me enfoco en lo que sostiene una aplicación: su backend, sus datos y la infraestructura que la hace funcionar.</p>
+        <a class="project-link" href="#proyecto">Conoce lo que estoy construyendo <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="drawing" aria-label="Tres miradas a la arquitectura de AC Maintainer">
+        <div class="diagram-tabs" role="tablist" aria-label="Tipo de diagrama UML">
+          <button id="tab-clases" role="tab" aria-selected="true" aria-controls="panel-clases" data-diagram="clases">Clases</button>
+          <button id="tab-secuencia" role="tab" aria-selected="false" aria-controls="panel-secuencia" data-diagram="secuencia" tabindex="-1">Secuencia</button>
+          <button id="tab-despliegue" role="tab" aria-selected="false" aria-controls="panel-despliegue" data-diagram="despliegue" tabindex="-1">Despliegue</button>
+        </div>
+        <section class="diagram-panel" id="panel-clases" role="tabpanel" aria-labelledby="tab-clases" tabindex="0">
+          <svg class="diagram-wide" viewBox="0 0 620 470" role="img" aria-labelledby="classes-title classes-desc">
+            <title id="classes-title">Diagrama de clases del dominio de AC Maintainer</title>
+            <desc id="classes-desc">Un cliente tiene cero o más direcciones. Cada dirección pertenece a un cliente y puede tener cero o más equipos instalados. Vista simplificada del modelo de datos, con nombres en español.</desc>
+            <g class="construction" aria-hidden="true"><path d="M15 37H605M15 439H605M28 15V455M592 15V455"/><path d="M21 37h14M28 30v14M585 439h14M592 432v14"/></g>
+            <g class="uml-links"><path d="M250 124H314V173H365"/><path d="M470 258V301H369V335"/></g>
+            <g class="uml-multiplicity"><text x="262" y="112">1</text><text x="322" y="161">0..*</text><text x="482" y="280">1</text><text x="380" y="322">0..*</text></g>
+            <g class="uml-node"><rect x="34" y="61" width="216" height="151"/><path d="M34 110H250"/><text class="uml-title" x="53" y="92">Cliente</text><text x="53" y="139">nombre: String</text><text x="53" y="165">email: String</text><text x="53" y="191">rut: String [0..1]</text></g>
+            <g class="uml-node"><rect x="365" y="136" width="224" height="122"/><path d="M365 185H589"/><text class="uml-title" x="384" y="167">Dirección</text><text x="384" y="214">calle: String</text><text x="384" y="240">comuna: String</text></g>
+            <g class="uml-node accent-node"><rect x="166" y="335" width="275" height="102"/><path d="M166 384H441"/><text class="uml-title" x="185" y="367">EquipoInstalado</text><text x="185" y="414">estado: EstadoEquipo</text></g>
+            <g class="diagram-note" aria-hidden="true"><text x="42" y="272">Un modelo pequeño.</text><text x="42" y="293">Relaciones explícitas.</text><path d="M176 279H215L253 318"/></g>
+            <text class="plate-code" x="522" y="417" aria-hidden="true">class</text>
+          </svg>
+          <svg class="diagram-mobile" viewBox="0 0 340 430" role="img" aria-labelledby="mobile-classes-title">
+            <title id="mobile-classes-title">Clases: un cliente tiene cero o más direcciones; una dirección tiene cero o más equipos instalados.</title>
+            <g class="uml-links"><path d="M101 116V150H212V175M212 276V309H141V340"/></g>
+            <g class="uml-multiplicity"><text x="113" y="138">1</text><text x="224" y="164">0..*</text><text x="225" y="296">1</text><text x="153" y="330">0..*</text></g>
+            <g class="uml-node"><rect x="8" y="15" width="198" height="101"/><path d="M8 58H206"/><text class="uml-title" x="23" y="43">Cliente</text><text x="23" y="82">nombre: String</text><text x="23" y="102">email: String</text></g>
+            <g class="uml-node"><rect x="126" y="175" width="205" height="101"/><path d="M126 218H331"/><text class="uml-title" x="141" y="203">Dirección</text><text x="141" y="241">calle: String</text><text x="141" y="261">comuna: String</text></g>
+            <g class="uml-node accent-node"><rect x="8" y="340" width="263" height="77"/><path d="M8 381H271"/><text class="uml-title" x="23" y="368">EquipoInstalado</text><text x="23" y="404">estado: EstadoEquipo</text></g>
+          </svg>
+          <p class="diagram-caption"><span>La estructura</span> Cada equipo tiene un lugar y un cliente.</p>
+        </section>
+        <section class="diagram-panel" id="panel-secuencia" role="tabpanel" aria-labelledby="tab-secuencia" tabindex="0" hidden>
+          <svg class="diagram-wide" viewBox="0 0 620 470" role="img" aria-labelledby="sequence-title sequence-desc">
+            <title id="sequence-title">Diagrama de secuencia: consultar clientes</title>
+            <desc id="sequence-desc">El navegador solicita la página a Next.js. Next.js consulta la API Fastify desde el servidor. Fastify consulta PostgreSQL y devuelve datos para que Next.js renderice la página. Se omiten detalles de autenticación en esta vista.</desc>
+            <defs><marker id="seq-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="currentColor"/></marker></defs>
+            <g class="uml-node"><rect x="14" y="55" width="127" height="47"/><text class="seq-name" x="77" y="84">Navegador</text><rect x="176" y="55" width="115" height="47"/><text class="seq-name" x="233" y="84">Next.js</text><rect x="333" y="55" width="115" height="47"/><text class="seq-name" x="390" y="84">Fastify</text><rect x="483" y="55" width="124" height="47"/><text class="seq-name" x="545" y="84">PostgreSQL</text></g>
+            <g class="lifeline"><path d="M77 102V427M233 102V427M390 102V427M545 102V427"/></g>
+            <g class="activation"><rect x="227" y="150" width="12" height="229"/><rect x="384" y="204" width="12" height="119"/><rect x="539" y="257" width="12" height="35"/></g>
+            <g class="sequence-message"><path d="M77 152H226" marker-end="url(#seq-arrow)"/><path d="M239 206H383" marker-end="url(#seq-arrow)"/><path d="M396 259H538" marker-end="url(#seq-arrow)"/></g>
+            <g class="uml-message"><text x="82" y="140">abrir clientes</text><text x="245" y="193">GET /clients</text><text x="412" y="247">consulta</text></g>
+            <g class="sequence-return"><path d="M539 292H397" marker-end="url(#seq-arrow)"/><path d="M384 324H240" marker-end="url(#seq-arrow)"/><path d="M227 378H78" marker-end="url(#seq-arrow)"/></g>
+            <g class="uml-message"><text x="430" y="312">filas</text><text x="289" y="347">datos</text><text x="93" y="401">página renderizada</text></g>
+          </svg>
+          <svg class="diagram-mobile" viewBox="0 0 340 430" role="img" aria-labelledby="mobile-sequence-title">
+            <title id="mobile-sequence-title">Secuencia resumida: el navegador pide una página a Next.js; Next.js consulta Fastify y renderiza los datos devueltos. Se omite la base de datos en esta vista móvil.</title>
+            <defs><marker id="mobile-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="currentColor"/></marker></defs>
+            <g class="uml-node"><rect x="2" y="25" width="99" height="42"/><text class="seq-name" x="51" y="51">Navegador</text><rect x="127" y="25" width="86" height="42"/><text class="seq-name" x="170" y="51">Next.js</text><rect x="243" y="25" width="94" height="42"/><text class="seq-name" x="290" y="51">Fastify</text></g>
+            <g class="lifeline"><path d="M51 67V405M170 67V405M290 67V405"/></g>
+            <g class="activation"><rect x="164" y="137" width="12" height="209"/><rect x="284" y="212" width="12" height="67"/></g>
+            <g class="sequence-message"><path d="M51 137H163M176 212H283" marker-end="url(#mobile-arrow)"/></g>
+            <g class="sequence-return"><path d="M284 279H177M164 346H52" marker-end="url(#mobile-arrow)"/></g>
+            <g class="uml-message"><text x="54" y="122">abrir página</text><text x="180" y="195">GET /clients</text><text x="206" y="302">datos</text><text x="55" y="370">renderizado</text></g>
+          </svg>
+          <p class="diagram-caption"><span>El recorrido</span> El navegador no consulta la API directamente.</p>
+        </section>
+        <section class="diagram-panel" id="panel-despliegue" role="tabpanel" aria-labelledby="tab-despliegue" tabindex="0" hidden>
+          <svg class="diagram-wide" viewBox="0 0 620 470" role="img" aria-labelledby="deployment-title deployment-desc">
+            <title id="deployment-title">Diagrama de despliegue simplificado en Railway</title>
+            <desc id="deployment-desc">El navegador se conecta al servicio frontend Next.js. Dentro de Railway, Next.js se comunica con la API Fastify por red privada. La API accede a PostgreSQL. El diagrama describe la arquitectura documentada; no representa una comprobación del despliegue actual.</desc>
+            <g class="deployment-boundary"><rect x="162" y="41" width="438" height="394"/><text x="181" y="69">Railway / entorno de despliegue</text></g>
+            <g class="uml-links"><path d="M133 203H224M468 222V271H345V321H367"/></g>
+            <g class="uml-node"><path d="M15 145H119V228H15ZM15 145L29 133H133V216L119 228M119 145L133 133"/><text x="31" y="175" class="stereotype">«device»</text><text x="31" y="204">Navegador</text></g>
+            <g class="uml-node"><path d="M205 108H544V245H205ZM205 108L221 94H560V231L544 245M544 108L560 94"/><text class="stereotype" x="226" y="137">«executionEnvironment»</text><text class="uml-title" x="226" y="163">Servicios de aplicación</text><rect x="225" y="184" width="130" height="38"/><text x="241" y="209">Next.js</text><rect x="412" y="184" width="113" height="38"/><text x="428" y="209">Fastify</text></g>
+            <path class="uml-links" d="M355 203H412"/><text class="micro-note" x="358" y="178">privada</text>
+            <g class="uml-node accent-node"><path d="M367 296H549V396H367ZM367 296L383 282H565V382L549 396M549 296L565 282"/><text class="stereotype" x="387" y="326">«executionEnvironment»</text><text class="uml-title" x="387" y="366">PostgreSQL</text></g>
+            <text class="micro-note" x="54" y="252">HTTPS</text><text class="micro-note" x="199" y="367">Persistencia</text><text class="micro-note" x="199" y="385">separada de la API.</text>
+          </svg>
+          <svg class="diagram-mobile" viewBox="0 0 340 430" role="img" aria-labelledby="mobile-deployment-title">
+            <title id="mobile-deployment-title">Despliegue en Railway: Next.js consulta Fastify por red privada y Fastify se conecta a PostgreSQL. Se omite el navegador en esta vista móvil.</title>
+            <g class="deployment-boundary"><rect x="7" y="14" width="324" height="404"/><text x="22" y="38">Railway</text></g>
+            <g class="uml-links"><path d="M163 139V186M163 264V307"/></g>
+            <g class="uml-node"><path d="M49 69H278V139H49ZM49 69L61 59H290V129L278 139M278 69L290 59"/><text class="stereotype" x="68" y="93">«executionEnvironment»</text><text class="uml-title" x="68" y="119">Next.js</text></g>
+            <text class="micro-note" x="179" y="165">red privada</text>
+            <g class="uml-node"><path d="M49 196H278V264H49ZM49 196L61 186H290V254L278 264M278 196L290 186"/><text class="stereotype" x="68" y="220">«executionEnvironment»</text><text class="uml-title" x="68" y="246">Fastify</text></g>
+            <g class="uml-node accent-node"><path d="M49 317H278V385H49ZM49 317L61 307H290V375L278 385M278 317L290 307"/><text class="stereotype" x="68" y="342">«executionEnvironment»</text><text class="uml-title" x="68" y="366">PostgreSQL</text></g>
+          </svg>
+          <p class="diagram-caption"><span>El contexto</span> Aplicación y datos, con responsabilidades separadas.</p>
+        </section>
+        <div class="drawing-footer"><span>AC Maintainer</span><span>UML · vista simplificada</span></div>
+      </div>
+      <div class="hero-foot"><p>Backend &amp; infraestructura<span>También construyo interfaces.</span></p><p>Trabajo remoto<span>En una empresa de Santiago.</span></p><a href="#credencial">Google Cloud Certified<span>Professional Cloud Architect <span aria-hidden="true">↗</span></span></a></div>
+    </section>
+
+    <section class="project-section" id="proyecto" aria-labelledby="project-title">
+      <div class="shell project-layout">
+        <div class="project-intro"><p class="section-label">Proyecto en desarrollo</p><h2 id="project-title">AC<br>Maintainer<span class="period">.</span></h2><p>Clientes, direcciones y equipos de climatización. Un problema concreto para conectar todas las capas.</p><ul class="stack" aria-label="Tecnologías del proyecto"><li>TypeScript</li><li>Next.js</li><li>Fastify</li><li>PostgreSQL</li><li>Drizzle</li></ul></div>
+        <div class="project-story"><h3>Una instalación no<br>es solo un equipo.</h3><p>También es el cliente al que pertenece, la dirección donde está y la información que permite administrarla. AC Maintainer reúne esas relaciones en una aplicación.</p><div class="domain-strip" aria-label="Cliente, dirección y equipo instalado"><span>Cliente</span><i aria-hidden="true"></i><span>Dirección</span><i aria-hidden="true"></i><span>Equipo</span></div>
+          <details class="decision"><summary>Dentro del proyecto <span aria-hidden="true">+</span></summary><div><h4>El servidor como punto de encuentro</h4><p>Next.js consulta Fastify desde el servidor. El navegador recibe la interfaz y no necesita conocer la dirección privada de la API.</p><h4>Sesiones fuera del JavaScript del navegador</h4><p>La sesión utiliza una cookie HttpOnly. Los formularios se procesan con Server Actions y la API valida los datos con Zod.</p><h4>Un dominio que conserva sus relaciones</h4><p>Clientes, direcciones y equipos se persisten en PostgreSQL mediante Drizzle. El registro de un equipo requiere una dirección del cliente y un modelo de equipo.</p></div></details>
+          <p class="project-status">En desarrollo y despliegue en Railway.<br>El acceso a la demo se añadirá cuando esté listo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach shell" id="enfoque" aria-labelledby="approach-title">
+      <div class="approach-heading"><h2 id="approach-title">Entre el modelo<br>y lo que usas.</h2><p>Ingeniero de Software con 1 año y 3 meses de experiencia. Mi trabajo se concentra en backend e infraestructura; el frontend me permite completar el recorrido.</p></div>
+      <div class="approach-items"><article><h3>Backend</h3><p>Modelos de datos, APIs y lógica de negocio. Lo que define cómo se comporta una aplicación.</p></article><article><h3>Infraestructura</h3><p>Entornos, servicios y despliegues. Lo que permite llevar el código a un sistema en funcionamiento.</p></article><article><h3>Frontend</h3><p>Interfaces conectadas al backend. El punto donde las decisiones técnicas se vuelven útiles.</p></article></div>
+    </section>
+
+    <section class="credential shell" id="credencial" aria-labelledby="credential-title">
+      <div class="credential-emblem" aria-hidden="true"><span>PCA</span><small>GOOGLE CLOUD</small></div>
+      <div class="credential-copy"><p>Certificación · junio de 2026</p><h2 id="credential-title">Professional<br>Cloud Architect</h2><span>Google Cloud</span></div><p class="credential-note">Una base para pensar<br>la arquitectura más allá<br>de una sola aplicación.</p>
+    </section>
+
+    <footer class="footer shell" id="contacto"><div><h2>Sigamos la conversación.</h2><p>Correo y enlaces profesionales por definir.</p></div><a href="#contenido">Volver arriba <span aria-hidden="true">↑</span></a><div class="prototype-note">Propuesta visual · Nombre y contacto pendientes de personalizar.</div></footer>
+  </main>
+</body>
+</html>

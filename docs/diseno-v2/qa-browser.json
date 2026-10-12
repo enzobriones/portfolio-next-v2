@@ -1,0 +1,42 @@
+[
+  {
+    "documentWidth": 375,
+    "selected": "Clases",
+    "visiblePanels": 1,
+    "width": 390
+  },
+  {
+    "documentWidth": 375,
+    "selected": "Secuencia",
+    "visiblePanels": 1,
+    "width": 390
+  },
+  {
+    "documentWidth": 375,
+    "selected": "Despliegue",
+    "visiblePanels": 1,
+    "width": 390
+  },
+  {
+    "documentWidth": 1425,
+    "selected": "Clases",
+    "visiblePanels": 1,
+    "width": 1440
+  },
+  {
+    "documentWidth": 1425,
+    "selected": "Secuencia",
+    "visiblePanels": 1,
+    "width": 1440
+  },
+  {
+    "documentWidth": 1425,
+    "selected": "Despliegue",
+    "visiblePanels": 1,
+    "width": 1440
+  },
+  {
+    "keyboard": "ArrowRight, End y rotación verificados",
+    "disclosure": "abre y cierra"
+  }
+]

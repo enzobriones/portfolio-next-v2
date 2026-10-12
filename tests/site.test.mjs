@@ -1,0 +1,29 @@
+import assert from "node:assert/strict";
+import { test } from "node:test";
+
+const origin = process.env.TEST_BASE_URL || "http://127.0.0.1:3000";
+
+test("public page exposes the approved profile and local assets", async () => {
+  const response = await fetch(origin);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const content of [
+    "Enzo Briones",
+    "mailto:enzobfriz@gmail.com",
+    "tel:+56981958638",
+    "https://github.com/enzobriones",
+    "ce938913fc7c4f43b10b8c48f10fe9c9",
+    "Ver certificado",
+    'role="tablist"',
+    'role="tabpanel"',
+  ]) {
+    assert(html.includes(content), `Missing public content: ${content}`);
+  }
+  assert(
+    !/Tu nombre|pendientes de personalizar|por definir|\.pdf["?]/i.test(html),
+  );
+  const image = await fetch(`${origin}/images/certificado-gcp.webp`);
+  assert.equal(image.status, 200);
+  assert.match(image.headers.get("content-type"), /image\/webp/);
+  assert.equal((await fetch(`${origin}/certificado.pdf`)).status, 404);
+});

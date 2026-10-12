@@ -1,0 +1,68 @@
+.certificate-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 44px;
+  margin-top: 18px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--paper);
+  font-size: 13px;
+}
+.certificate-trigger span {
+  color: var(--accent);
+}
+.certificate-trigger:hover,
+.dialog-close:hover {
+  color: var(--accent);
+}
+.certificate-trigger:active,
+.dialog-close:active {
+  transform: translateY(1px);
+}
+.certificate-title {
+  padding-right: 90px;
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.4;
+}
+.certificate-description {
+  margin-top: 10px;
+  margin-bottom: 22px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.certificate-image {
+  overflow-x: auto;
+  background: #fff;
+}
+.certificate-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 700px;
+}
+.certificate-id {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+.dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  background: transparent;
+  border: 0;
+  padding: 0 8px;
+  font-size: 13px;
+}
+.dialog-close span {
+  font-size: 24px;
+}
