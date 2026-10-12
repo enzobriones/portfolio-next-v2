@@ -14,11 +14,14 @@ test("public page exposes the approved profile and local assets", async () => {
     "https://github.com/enzobriones",
     "ce938913fc7c4f43b10b8c48f10fe9c9",
     "Ver certificado",
+    "AC Maintainer",
+    'id="proyectos"',
     'role="tablist"',
     'role="tabpanel"',
   ]) {
     assert(html.includes(content), `Missing public content: ${content}`);
   }
+  assert(!/UML/.test(html), "The page must not mention UML");
   assert(
     !/Tu nombre|pendientes de personalizar|por definir|\.pdf["?]/i.test(html),
   );

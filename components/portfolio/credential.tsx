@@ -29,11 +29,11 @@ export function Credential() {
       </div>
       <div className="credential-note">
         <p>
-          Una base para pensar
+          Me ayuda a ver
           <br />
-          la arquitectura más allá
+          el panorama completo,
           <br />
-          de una sola aplicación.
+          más allá de una sola aplicación.
         </p>
         <CertificateViewer />
       </div>

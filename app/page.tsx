@@ -1,6 +1,6 @@
 import { Header } from "@/components/portfolio/header";
 import { Hero } from "@/components/portfolio/hero";
-import { Project } from "@/components/portfolio/project";
+import { Projects } from "@/components/portfolio/project";
 import { Approach } from "@/components/portfolio/approach";
 import { Credential } from "@/components/portfolio/credential";
 import { Contact } from "@/components/portfolio/contact";
@@ -14,7 +14,7 @@ export default function Home() {
       <Header />
       <main id="contenido">
         <Hero />
-        <Project />
+        <Projects />
         <Approach />
         <Credential />
       </main>

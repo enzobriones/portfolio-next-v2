@@ -1,37 +1,42 @@
 import { ArchitectureTabs } from "./architecture-tabs";
-import { ClassesDiagram } from "./diagrams/clases";
-import { SequenceDiagram } from "./diagrams/secuencia";
-import { DeploymentDiagram } from "./diagrams/despliegue";
+import { AboutDiagram } from "./diagrams/sobre-mi";
+import { WorkflowDiagram } from "./diagrams/como-trabajo";
+import { ToolsDiagram } from "./diagrams/herramientas";
 
 export function Hero() {
   return (
     <section className="hero shell" aria-labelledby="hero-title">
       <div className="hero-copy">
         <h1 id="hero-title">
-          El software,
+          Hola,
           <br />
-          <span>por dentro.</span>
+          soy <span>Enzo.</span>
         </h1>
         <p className="intro">
-          Me enfoco en lo que sostiene una aplicación: su backend, sus datos y
-          la infraestructura que la hace funcionar.
+          Me gusta construir cosas que la gente de verdad usa, desde donde se
+          guardan los datos hasta la pantalla que tienes enfrente.
         </p>
-        <a className="project-link" href="#proyecto">
-          Conoce lo que estoy construyendo <span aria-hidden="true">↘</span>
+        <a className="project-link" href="#proyectos">
+          Mira lo que estoy armando <span aria-hidden="true">↘</span>
         </a>
       </div>
       <ArchitectureTabs
-        classes={<ClassesDiagram />}
-        sequence={<SequenceDiagram />}
-        deployment={<DeploymentDiagram />}
+        label="Tres formas de conocerme"
+        footer="Enzo Briones"
+        tabs={[
+          { value: "yo", label: "Quién soy", content: <AboutDiagram /> },
+          {
+            value: "trabajo",
+            label: "Cómo trabajo",
+            content: <WorkflowDiagram />,
+          },
+          { value: "con-que", label: "Con qué", content: <ToolsDiagram /> },
+        ]}
       />
       <div className="hero-foot">
         <p>
           Backend &amp; infraestructura
-          <span>También construyo interfaces.</span>
-        </p>
-        <p>
-          Trabajo remoto<span>En una empresa de Santiago.</span>
+          <span>Y también las pantallas.</span>
         </p>
         <a href="#credencial">
           Google Cloud Certified

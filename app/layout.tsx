@@ -25,12 +25,12 @@ const mono = localFont({
 export const metadata: Metadata = {
   title: `${profile.name} — Ingeniero de Software`,
   description:
-    "Backend, datos e infraestructura. Explora el trabajo de Enzo Briones y las decisiones detrás de AC Maintainer.",
+    "Backend, datos e infraestructura. Conoce a Enzo Briones y los proyectos que está construyendo.",
   authors: [{ name: profile.name }],
   openGraph: {
-    title: `${profile.name} — El software, por dentro`,
+    title: `${profile.name} — Software que funciona de verdad`,
     description:
-      "Backend e infraestructura, desde el modelo de datos hasta el despliegue.",
+      "Desde donde viven los datos hasta lo que ves en pantalla.",
     locale: "es_CL",
     type: "website",
   },

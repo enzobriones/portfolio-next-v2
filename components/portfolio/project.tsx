@@ -1,78 +1,79 @@
-export function Project() {
+import type { ReactNode } from "react";
+import { projects } from "@/lib/projects";
+import { ArchitectureTabs } from "./architecture-tabs";
+import { ClassesDiagram } from "./diagrams/clases";
+import { SequenceDiagram } from "./diagrams/secuencia";
+import { DeploymentDiagram } from "./diagrams/despliegue";
+
+// Proyectos sin entrada aquí se muestran sin diagramas.
+const diagrams: Record<string, ReactNode> = {
+  "ac-maintainer": (
+    <ArchitectureTabs
+      label="Tres miradas a AC Maintainer"
+      footer="AC Maintainer · vista simplificada"
+      tabs={[
+        { value: "datos", label: "Los datos", content: <ClassesDiagram /> },
+        {
+          value: "recorrido",
+          label: "El recorrido",
+          content: <SequenceDiagram />,
+        },
+        { value: "casa", label: "Dónde vive", content: <DeploymentDiagram /> },
+      ]}
+    />
+  ),
+};
+
+export function Projects() {
   return (
     <section
       className="project-section"
-      id="proyecto"
-      aria-labelledby="project-title"
+      id="proyectos"
+      aria-labelledby="projects-title"
     >
-      <div className="shell project-layout">
-        <div className="project-intro">
-          <p className="section-label">Proyecto en desarrollo</p>
-          <h2 id="project-title">
-            AC
-            <br />
-            Maintainer<span className="period">.</span>
-          </h2>
-          <p>
-            Clientes, direcciones y equipos de climatización. Un problema
-            concreto para conectar todas las capas.
-          </p>
-          <ul className="stack" aria-label="Tecnologías del proyecto">
-            <li>TypeScript</li>
-            <li>Next.js</li>
-            <li>Fastify</li>
-            <li>PostgreSQL</li>
-            <li>Drizzle</li>
-          </ul>
-        </div>
-        <div className="project-story">
-          <h3>
-            Una instalación no
-            <br />
-            es solo un equipo.
-          </h3>
-          <p>
-            También es el cliente al que pertenece, la dirección donde está y la
-            información que permite administrarla. AC Maintainer reúne esas
-            relaciones en una aplicación.
-          </p>
-          <div
-            className="domain-strip"
-            aria-label="Cliente, dirección y equipo instalado"
-          >
-            <span>Cliente</span>
-            <i aria-hidden="true"></i>
-            <span>Dirección</span>
-            <i aria-hidden="true"></i>
-            <span>Equipo</span>
-          </div>
-          <details className="decision">
-            <summary>
-              Dentro del proyecto <span aria-hidden="true">+</span>
-            </summary>
-            <div>
-              <h4>El servidor como punto de encuentro</h4>
-              <p>
-                Next.js consulta Fastify desde el servidor. El navegador recibe
-                la interfaz y no necesita conocer la dirección privada de la
-                API.
-              </p>
-              <h4>Sesiones fuera del JavaScript del navegador</h4>
-              <p>
-                La sesión utiliza una cookie HttpOnly. Los formularios se
-                procesan con Server Actions y la API valida los datos con Zod.
-              </p>
-              <h4>Un dominio que conserva sus relaciones</h4>
-              <p>
-                Clientes, direcciones y equipos se persisten en PostgreSQL
-                mediante Drizzle. El registro de un equipo requiere una
-                dirección del cliente y un modelo de equipo.
-              </p>
-            </div>
-          </details>
-          <p className="project-status">
-            En desarrollo y despliegue en Railway.
-          </p>
+      <div className="shell">
+        <p className="section-label">Proyectos</p>
+        <h2 id="projects-title" className="projects-title">
+          Lo que estoy armando<span className="period">.</span>
+        </h2>
+        <p className="projects-lead">
+          Cosas que armo para resolver problemas del día a día, de principio a
+          fin.
+        </p>
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <article className="project-card" key={project.id}>
+              <header>
+                <h3>{project.name}</h3>
+                <span>{project.status}</span>
+              </header>
+              <div className="project-card-body">
+                <p>{project.summary}</p>
+                <ul
+                  className="stack"
+                  aria-label={`Tecnologías de ${project.name}`}
+                >
+                  {project.stack.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+                <details className="decision">
+                  <summary>
+                    Ver por dentro <span aria-hidden="true">+</span>
+                  </summary>
+                  <div>
+                    {project.details?.map((detail) => (
+                      <section key={detail.title}>
+                        <h4>{detail.title}</h4>
+                        <p>{detail.text}</p>
+                      </section>
+                    ))}
+                    {diagrams[project.id]}
+                  </div>
+                </details>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

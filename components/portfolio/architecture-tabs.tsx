@@ -4,41 +4,34 @@ import type { ReactNode } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function ArchitectureTabs({
-  classes,
-  sequence,
-  deployment,
+  label,
+  footer,
+  tabs,
 }: {
-  classes: ReactNode;
-  sequence: ReactNode;
-  deployment: ReactNode;
+  label: string;
+  footer: string;
+  tabs: { value: string; label: string; content: ReactNode }[];
 }) {
   return (
-    <Tabs
-      defaultValue="clases"
-      className="drawing"
-      aria-label="Tres miradas a la arquitectura de AC Maintainer"
-    >
-      <TabsList
-        className="diagram-tabs"
-        aria-label="Tipo de diagrama UML"
-        activateOnFocus
-      >
-        <TabsTrigger value="clases">Clases</TabsTrigger>
-        <TabsTrigger value="secuencia">Secuencia</TabsTrigger>
-        <TabsTrigger value="despliegue">Despliegue</TabsTrigger>
+    <Tabs defaultValue={tabs[0].value} className="drawing" aria-label={label}>
+      <TabsList className="diagram-tabs" aria-label="Vistas" activateOnFocus>
+        {tabs.map((tab) => (
+          <TabsTrigger key={tab.value} value={tab.value}>
+            {tab.label}
+          </TabsTrigger>
+        ))}
       </TabsList>
-      <TabsContent value="clases" className="diagram-panel">
-        {classes}
-      </TabsContent>
-      <TabsContent value="secuencia" className="diagram-panel">
-        {sequence}
-      </TabsContent>
-      <TabsContent value="despliegue" className="diagram-panel">
-        {deployment}
-      </TabsContent>
+      {tabs.map((tab) => (
+        <TabsContent
+          key={tab.value}
+          value={tab.value}
+          className="diagram-panel"
+        >
+          {tab.content}
+        </TabsContent>
+      ))}
       <div className="drawing-footer">
-        <span>AC Maintainer</span>
-        <span>UML · vista simplificada</span>
+        <span>{footer}</span>
       </div>
     </Tabs>
   );

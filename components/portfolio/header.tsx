@@ -13,7 +13,7 @@ export function Header() {
         </span>
       </a>
       <nav aria-label="Principal">
-        <a href="#proyecto">Proyecto</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="#enfoque">Enfoque</a>
         <a href="#credencial">Credencial</a>
       </nav>

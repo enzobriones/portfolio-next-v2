@@ -340,7 +340,7 @@ svg {
 .hero-foot {
   grid-column: 1/-1;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 32px;
   margin-top: 80px;
   padding-top: 25px;
@@ -369,29 +369,13 @@ svg {
   padding-block: 96px 104px;
   margin-top: 34px;
 }
-.project-layout {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 100px;
-}
 .section-label {
   font-size: 12px;
   color: var(--muted);
   margin-bottom: 26px;
 }
-.project-intro h2 {
-  font-size: clamp(62px, 6vw, 86px);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-}
 .period {
   color: var(--accent);
-}
-.project-intro > p:not(.section-label) {
-  margin-top: 28px;
-  max-width: 340px;
-  color: var(--muted);
-  font-size: 15px;
 }
 .stack {
   display: flex;
@@ -402,43 +386,6 @@ svg {
   list-style: none;
   font: 11px var(--mono);
   color: var(--paper);
-}
-.project-story {
-  padding-top: 15px;
-}
-.project-story h3 {
-  font: 300 38px/1.2 var(--display);
-  margin-bottom: 22px;
-}
-.project-story > p {
-  font-size: 14px;
-  color: var(--muted);
-}
-.domain-strip {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-block: 37px;
-  font: 12px var(--mono);
-  color: var(--accent);
-}
-.domain-strip i {
-  height: 1px;
-  background: var(--line);
-  flex: 1;
-  max-width: 50px;
-  position: relative;
-}
-.domain-strip i:after {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  right: 0;
-  top: -2px;
-  transform: rotate(45deg);
 }
 .decision {
   border-block: 1px solid var(--line);
@@ -481,10 +428,61 @@ svg {
 .decision p:last-child {
   margin-bottom: 0;
 }
-.project-story .project-status {
-  font-size: 11px;
-  margin-top: 24px;
-  line-height: 1.8;
+.projects-title {
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.projects-lead {
+  margin-top: 22px;
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 28px;
+  margin-top: 56px;
+  align-items: start;
+}
+.project-card {
+  background: var(--ink);
+  border: 1px solid var(--accent);
+  min-width: 0;
+}
+.project-card > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--accent);
+}
+.project-card h3 {
+  font: 19px var(--mono);
+  color: var(--accent);
+}
+.project-card > header span {
+  font: 11px var(--mono);
+  color: var(--muted);
+}
+.project-card-body {
+  padding: 22px 24px 4px;
+}
+.project-card-body > p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.project-card .decision {
+  margin-top: 26px;
+  border-bottom: 0;
+}
+.project-card .decision section {
+  margin-bottom: 20px;
+}
+.project-card .drawing {
+  margin-top: 28px;
 }
 .approach {
   display: grid;
@@ -636,7 +634,6 @@ svg {
     font-size: 12px;
     gap: 15px;
   }
-  .project-layout,
   .approach {
     gap: 60px;
   }
@@ -746,31 +743,12 @@ svg {
     margin-top: 35px;
     padding-block: 54px;
   }
-  .project-layout {
-    grid-template-columns: 1fr;
-    gap: 42px;
-  }
   .section-label {
     margin-bottom: 19px;
-  }
-  .project-intro h2 {
-    font-size: 68px;
-  }
-  .project-intro > p:not(.section-label) {
-    margin-top: 22px;
   }
   .stack {
     font-size: 10px;
     gap: 12px 18px;
-  }
-  .project-story {
-    padding-top: 0;
-  }
-  .project-story h3 {
-    font-size: 36px;
-  }
-  .project-story > p {
-    font-size: 14px;
   }
   .approach {
     grid-template-columns: 1fr;
@@ -860,7 +838,6 @@ svg {
     display: none;
   }
   .hero,
-  .project-layout,
   .approach {
     break-inside: avoid;
   }

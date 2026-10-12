@@ -4,7 +4,7 @@ export function Contact() {
   return (
     <footer className="footer shell" id="contacto">
       <div>
-        <h2>Sigamos la conversación.</h2>
+        <h2>¿Hablamos?</h2>
         <address className="contact-links">
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
           <a href={`tel:${profile.phone}`}>{profile.phoneLabel}</a>
