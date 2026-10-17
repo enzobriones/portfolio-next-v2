@@ -70,7 +70,7 @@ a:hover {
   top: 8px;
 }
 section[id] {
-  scroll-margin-top: 16px;
+  scroll-margin-top: 96px;
 }
 
 .shell {
@@ -135,6 +135,10 @@ section[id] {
   align-items: center;
   min-height: 76px;
   border-bottom: var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
 }
 .brand {
   grid-column: 1 / 4;
@@ -379,6 +383,11 @@ a.card:hover {
 .card-cta .btn {
   margin-top: auto;
 }
+@media (min-width: 861px) {
+  .card-cta {
+    grid-column: span 2;
+  }
+}
 
 /* stack */
 .stack-grid {
@@ -577,7 +586,7 @@ a.card:hover {
   grid-column: 1 / 4;
   align-self: start;
   position: sticky;
-  top: 24px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -908,6 +917,9 @@ a.card:hover {
   }
   .section {
     padding-top: 56px;
+  }
+  section[id] {
+    scroll-margin-top: 80px;
   }
   .section-head {
     row-gap: 10px;

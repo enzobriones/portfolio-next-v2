@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/portfolio/header";
 import { CertificateViewer } from "@/components/portfolio/certificate-viewer";
 import { profile } from "@/lib/profile";
-import { projects } from "@/lib/projects";
+import { caseStudies, projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Sobre mí — Enzo Briones",
@@ -66,7 +66,7 @@ export default function About() {
             <div className="prose">
               <p>
                 Diseño y opero sistemas backend y la infraestructura donde
-                corren. Hoy construyo {projects.map((p) => p.name).join(" y ")}
+                corren. Hoy construyo {caseStudies.map((p) => p.name).join(" y ")}
                 , dos plataformas multi-tenant donde cada empresa opera sobre
                 sus propios datos.
               </p>

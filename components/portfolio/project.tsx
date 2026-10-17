@@ -21,29 +21,38 @@ export function Projects() {
         </p>
       </div>
       <div className="cards">
-        {projects.map((p, i) => (
-          <a className="card" key={p.id} href={`/proyectos/${p.id}`}>
-            <div className="card-top">
-              <span>proyectos/{p.id}</span>
-              <span>{pad(i)}</span>
-            </div>
-            <h3>{p.name}</h3>
-            <span className="tagline">
-              {p.tagline} · {p.status}
-            </span>
-            <p className="summary">{p.summary}</p>
-            <div className="card-foot">
-              <ul className="tags" aria-label={`Tecnologías de ${p.name}`}>
-                {p.stack.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-              <span className="card-link">
-                caso de estudio <span aria-hidden="true">→</span>
+        {projects.map((p, i) => {
+          const Tag = p.context ? "a" : "div";
+          return (
+            <Tag
+              className="card"
+              key={p.id}
+              href={p.context ? `/proyectos/${p.id}` : undefined}
+            >
+              <div className="card-top">
+                <span>proyectos/{p.id}</span>
+                <span>{pad(i)}</span>
+              </div>
+              <h3>{p.name}</h3>
+              <span className="tagline">
+                {p.tagline} · {p.status}
               </span>
-            </div>
-          </a>
-        ))}
+              <p className="summary">{p.summary}</p>
+              <div className="card-foot">
+                <ul className="tags" aria-label={`Tecnologías de ${p.name}`}>
+                  {p.stack.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+                {p.context && (
+                  <span className="card-link">
+                    caso de estudio <span aria-hidden="true">→</span>
+                  </span>
+                )}
+              </div>
+            </Tag>
+          );
+        })}
         <div className="card card-cta">
           <div className="card-top">$ ./nuevo-proyecto.sh</div>
           <h3>¿Tienes un sistema que construir o escalar?</h3>

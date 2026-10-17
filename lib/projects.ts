@@ -6,11 +6,12 @@ export type Project = {
   status: string;
   role: string;
   stack: string[];
-  intro: string;
-  context: string[];
-  architecture: { label: string; name: string; external?: boolean }[];
-  figure: string;
-  decisions: { title: string; text: string }[];
+  // Sin intro/context/architecture/figure/decisions: tarjeta sin caso de estudio.
+  intro?: string;
+  context?: string[];
+  architecture?: { label: string; name: string; external?: boolean }[];
+  figure?: string;
+  decisions?: { title: string; text: string }[];
 };
 
 export const projects: Project[] = [
@@ -88,6 +89,28 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: "datalake",
+    name: "Datalake",
+    tagline: "Datos centralizados",
+    summary:
+      "Experiencia construyendo datalakes: ingesta desde los sistemas operacionales hacia un lago en GCP, con capas raw y curated y modelos listos para BI.",
+    status: "Experiencia profesional",
+    role: "Backend e infraestructura",
+    stack: ["BigQuery", "Dataflow", "dbt"],
+  },
+  {
+    id: "automatizaciones",
+    name: "Chatbots y documentos",
+    tagline: "Automatizaciones",
+    summary:
+      "Experiencia automatizando procesos: chatbots que atienden consultas y flujos de gestión documental que reemplazan trabajo manual.",
+    status: "Experiencia profesional",
+    role: "Backend e integraciones",
+    stack: ["Chatbots", "Gestión documental", "Automatización"],
+  },
 ];
 
-export const getProject = (id: string) => projects.find((p) => p.id === id);
+export const caseStudies = projects.filter((p) => p.context);
+
+export const getProject = (id: string) => caseStudies.find((p) => p.id === id);
