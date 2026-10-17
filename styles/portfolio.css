@@ -5,9 +5,9 @@
   --ink: #201e1d;
   --muted: #605d5d;
   --faint: #7d7979;
-  --accent: #ec3013;
-  --accent-dark: #ae1800;
-  --accent-tint: #ffe0d9;
+  --accent: #9cc3f5;
+  --accent-dark: #1f55a8;
+  --accent-tint: #e3eefc;
   --rule: 2px solid var(--ink);
   --body: var(--font-body), system-ui, sans-serif;
   --mono: var(--font-mono), ui-monospace, monospace;
@@ -51,10 +51,10 @@ a:hover {
   color: var(--accent-dark);
 }
 ::selection {
-  background: #ffc4b8;
+  background: #cfe0f8;
 }
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-dark);
   outline-offset: 2px;
 }
 .skip {
@@ -100,14 +100,14 @@ section[id] {
 }
 .btn:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 .btn-accent {
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 .btn-accent:hover {
-  background: #c9250d;
+  background: #7fb0ee;
 }
 .btn-outline {
   border-color: var(--ink);
@@ -148,7 +148,7 @@ section[id] {
 }
 .brand span {
   font: 400 14px var(--mono);
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 .header nav {
   grid-column: 4 / 10;
@@ -201,7 +201,7 @@ section[id] {
   font: 14px var(--mono);
 }
 .section-head .cmd b {
-  color: var(--accent);
+  color: var(--accent-dark);
   font-weight: 400;
 }
 .section-head h2 {
@@ -242,7 +242,7 @@ section[id] {
   text-wrap: balance;
 }
 .hero h1 span {
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 .hero-copy > p {
   max-width: 640px;
@@ -367,7 +367,7 @@ a.card:hover {
 .card-cta {
   gap: 20px;
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 .card-cta .card-top {
   color: var(--ink);
@@ -432,7 +432,7 @@ a.card:hover {
   margin-top: 112px;
   padding-block: 88px;
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 .contact .grid > div:first-child {
   grid-column: 1 / 9;
@@ -461,10 +461,12 @@ a.card:hover {
 .contact address {
   display: grid;
   grid-template-columns: auto 1fr;
+  align-items: center;
   gap: 4px 16px;
   font: normal 15px var(--mono);
   color: var(--ink);
 }
+.contact address span,
 .contact address a {
   display: inline-flex;
   align-items: center;
@@ -472,7 +474,7 @@ a.card:hover {
   overflow-wrap: anywhere;
 }
 .contact address a:hover {
-  color: #fff;
+  text-decoration: underline;
 }
 .contact .btn {
   padding: 18px;
@@ -643,9 +645,9 @@ a.card:hover {
   color: var(--muted);
 }
 .flow li.ext {
-  border-color: var(--accent);
+  border-color: var(--ink);
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
 }
 .flow li.ext small {
   color: var(--ink);
@@ -674,7 +676,7 @@ a.card:hover {
   grid-column: 1 / 2;
   font-size: 32px;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 .decision h3 {
   grid-column: 2 / 5;
@@ -713,7 +715,7 @@ a.card:hover {
   justify-self: end;
   font-size: 64px;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--accent-dark);
   line-height: 0.9;
 }
 

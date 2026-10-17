@@ -6,7 +6,7 @@
   --color-background: var(--bg);
   --color-foreground: var(--ink);
   --color-primary: var(--accent);
-  --color-primary-foreground: #fff;
+  --color-primary-foreground: var(--ink);
   --color-border: var(--ink);
   --color-ring: var(--accent);
   --font-sans: var(--font-body);
