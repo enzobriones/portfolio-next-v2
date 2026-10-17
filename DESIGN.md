@@ -1,9 +1,13 @@
 # Diseño del portafolio
 
-La fuente visual es [docs/diseno-v2/DESIGN.md](docs/diseno-v2/DESIGN.md). Mantener el enfoque en backend e infraestructura, el color tinta azul grisáceo, acento latón, fuentes Fira Sans/Fira Sans Condensed/JetBrains Mono locales y diagramas UML como contenido principal.
+Dirección visual "modernist": fondo claro `#f3f2f2`, tinta `#201e1d`, un único acento rojo `#ec3013`, grilla de 12 columnas, reglas de 2 px, sin radios ni sombras, y estética de terminal (`$ ls ./proyectos`). Fuentes Archivo e IBM Plex Mono vía `next/font/google`.
 
-La implementación usa Next.js y Tailwind con primitivas shadcn/Base UI adaptadas, no un tema visual predeterminado. Las secciones estáticas y los SVG son componentes de servidor. No añadir biblioteca de diagramas, animación continua ni servicios de backend.
+Páginas: Home (`/`), un caso de estudio por proyecto (`/proyectos/[id]`) y Sobre mí en formato man page (`/sobre-mi`). Los proyectos viven en `lib/projects.ts` y el perfil en `lib/profile.ts`.
 
-El perfil vive en `lib/profile.ts`. El certificado se presenta en un diálogo con una imagen legible y desplazamiento horizontal en móvil, título/descripción accesibles, cierre con Escape y retorno de foco. No publicar el PDF original. No prometer protección contra copias de la imagen.
+No incluir contenido inventado (métricas, repos, experiencia, retrato ni CV) hasta tener datos reales. Los diagramas son HTML/CSS; no añadir biblioteca de diagramas ni animación continua.
 
-Mantener navegación por teclado, foco visible, movimiento reducido y variantes móviles de los diagramas. Cualquier cambio visual debe comprobarse entre 320 y 1440 px y con zoom al 200 %.
+El certificado se presenta en un diálogo con imagen legible, desplazamiento horizontal en móvil, cierre con Escape y retorno de foco. No publicar el PDF original.
+
+Mantener navegación por teclado, foco visible y movimiento reducido. Todo cambio visual debe comprobarse entre 320 y 1440 px y con zoom al 200 %.
+
+`docs/diseno-v2` es el diseño anterior, solo histórico.

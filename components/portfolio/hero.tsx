@@ -1,49 +1,52 @@
-import { ArchitectureTabs } from "./architecture-tabs";
-import { AboutDiagram } from "./diagrams/sobre-mi";
-import { WorkflowDiagram } from "./diagrams/como-trabajo";
-import { ToolsDiagram } from "./diagrams/herramientas";
+import { profile } from "@/lib/profile";
+
+const rows = [
+  ["nombre:", profile.name],
+  ["rol:", "Ingeniero de Software"],
+  ["foco:", "[backend, infraestructura]"],
+  ["cert:", "GCP Professional Cloud Architect"],
+  ["modalidad:", "freelance · remoto"],
+] as const;
 
 export function Hero() {
   return (
-    <section className="hero shell" aria-labelledby="hero-title">
+    <section className="hero shell grid" aria-labelledby="hero-title">
       <div className="hero-copy">
+        <p className="prompt">enzo@prod:~$ whoami</p>
         <h1 id="hero-title">
-          Hola,
-          <br />
-          soy <span>Enzo.</span>
+          Backend e infraestructura que aguanta <span>producción.</span>
         </h1>
-        <p className="intro">
-          Me gusta construir cosas que la gente de verdad usa, desde donde se
-          guardan los datos hasta la pantalla que tienes enfrente.
-        </p>
-        <a className="project-link" href="#proyectos">
-          Mira lo que estoy armando <span aria-hidden="true">↘</span>
-        </a>
-      </div>
-      <ArchitectureTabs
-        label="Tres formas de conocerme"
-        footer="Enzo Briones"
-        tabs={[
-          { value: "yo", label: "Quién soy", content: <AboutDiagram /> },
-          {
-            value: "trabajo",
-            label: "Cómo trabajo",
-            content: <WorkflowDiagram />,
-          },
-          { value: "con-que", label: "Con qué", content: <ToolsDiagram /> },
-        ]}
-      />
-      <div className="hero-foot">
         <p>
-          Backend &amp; infraestructura
-          <span>Y también las pantallas.</span>
+          Ingeniero de software. Diseño, construyo y opero sistemas
+          multi-tenant, APIs e integraciones, y la nube donde corren.
         </p>
-        <a href="#credencial">
-          Google Cloud Certified
-          <span>
-            Professional Cloud Architect <span aria-hidden="true">↗</span>
-          </span>
-        </a>
+        <div className="cta-row">
+          <a className="btn btn-accent" href={`mailto:${profile.email}`}>
+            Escríbeme <span aria-hidden="true">→</span>
+          </a>
+          <a className="btn btn-outline" href="#proyectos">
+            Ver proyectos <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+      <div className="profile">
+        <header>
+          <span>$ cat perfil.yaml</span>
+          <span>6 líneas</span>
+        </header>
+        <dl>
+          {rows.map(([k, v]) => (
+            <div key={k} style={{ display: "contents" }}>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+          <dt>estado:</dt>
+          <dd>
+            <b>aceptando proyectos</b>
+            <i aria-hidden="true" />
+          </dd>
+        </dl>
       </div>
     </section>
   );
