@@ -1,13 +1,12 @@
 import { Header } from "@/components/portfolio/header";
 import { Hero } from "@/components/portfolio/hero";
 import { Projects } from "@/components/portfolio/project";
-import { Approach } from "@/components/portfolio/approach";
-import { Credential } from "@/components/portfolio/credential";
+import { Stack } from "@/components/portfolio/stack";
 import { Contact } from "@/components/portfolio/contact";
 
 export default function Home() {
   return (
-    <>
+    <div id="top">
       <a className="skip" href="#contenido">
         Saltar al contenido
       </a>
@@ -15,10 +14,9 @@ export default function Home() {
       <main id="contenido">
         <Hero />
         <Projects />
-        <Approach />
-        <Credential />
+        <Stack />
       </main>
       <Contact />
-    </>
+    </div>
   );
 }

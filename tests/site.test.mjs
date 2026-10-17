@@ -12,12 +12,10 @@ test("public page exposes the approved profile and local assets", async () => {
     "mailto:enzobfriz@gmail.com",
     "tel:+56981958638",
     "https://github.com/enzobriones",
-    "ce938913fc7c4f43b10b8c48f10fe9c9",
     "Ver certificado",
     "AC Maintainer",
+    "SII Pymes",
     'id="proyectos"',
-    'role="tablist"',
-    'role="tabpanel"',
   ]) {
     assert(html.includes(content), `Missing public content: ${content}`);
   }
@@ -29,4 +27,11 @@ test("public page exposes the approved profile and local assets", async () => {
   assert.equal(image.status, 200);
   assert.match(image.headers.get("content-type"), /image\/webp/);
   assert.equal((await fetch(`${origin}/certificado.pdf`)).status, 404);
+});
+
+test("case studies and about page exist, unknown projects 404", async () => {
+  for (const path of ["/proyectos/ac-maintainer", "/proyectos/sii-pymes", "/sobre-mi"]) {
+    assert.equal((await fetch(origin + path)).status, 200, path);
+  }
+  assert.equal((await fetch(`${origin}/proyectos/no-existe`)).status, 404);
 });

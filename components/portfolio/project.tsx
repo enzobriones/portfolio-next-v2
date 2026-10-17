@@ -1,79 +1,55 @@
-import type { ReactNode } from "react";
 import { projects } from "@/lib/projects";
-import { ArchitectureTabs } from "./architecture-tabs";
-import { ClassesDiagram } from "./diagrams/clases";
-import { SequenceDiagram } from "./diagrams/secuencia";
-import { DeploymentDiagram } from "./diagrams/despliegue";
+import { profile } from "@/lib/profile";
 
-// Proyectos sin entrada aquí se muestran sin diagramas.
-const diagrams: Record<string, ReactNode> = {
-  "ac-maintainer": (
-    <ArchitectureTabs
-      label="Tres miradas a AC Maintainer"
-      footer="AC Maintainer · vista simplificada"
-      tabs={[
-        { value: "datos", label: "Los datos", content: <ClassesDiagram /> },
-        {
-          value: "recorrido",
-          label: "El recorrido",
-          content: <SequenceDiagram />,
-        },
-        { value: "casa", label: "Dónde vive", content: <DeploymentDiagram /> },
-      ]}
-    />
-  ),
-};
+const pad = (n: number) => String(n + 1).padStart(2, "0");
 
 export function Projects() {
   return (
     <section
-      className="project-section"
+      className="section shell"
       id="proyectos"
       aria-labelledby="projects-title"
     >
-      <div className="shell">
-        <p className="section-label">Proyectos</p>
-        <h2 id="projects-title" className="projects-title">
-          Lo que estoy armando<span className="period">.</span>
-        </h2>
-        <p className="projects-lead">
-          Cosas que armo para resolver problemas del día a día, de principio a
-          fin.
+      <div className="section-head grid">
+        <p className="cmd">
+          <b>01</b> — $ ls ./proyectos
         </p>
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.id}>
-              <header>
-                <h3>{project.name}</h3>
-                <span>{project.status}</span>
-              </header>
-              <div className="project-card-body">
-                <p>{project.summary}</p>
-                <ul
-                  className="stack"
-                  aria-label={`Tecnologías de ${project.name}`}
-                >
-                  {project.stack.map((tech) => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-                <details className="decision">
-                  <summary>
-                    Ver por dentro <span aria-hidden="true">+</span>
-                  </summary>
-                  <div>
-                    {project.details?.map((detail) => (
-                      <section key={detail.title}>
-                        <h4>{detail.title}</h4>
-                        <p>{detail.text}</p>
-                      </section>
-                    ))}
-                    {diagrams[project.id]}
-                  </div>
-                </details>
-              </div>
-            </article>
-          ))}
+        <h2 id="projects-title">Proyectos</h2>
+        <p>
+          Sistemas multi-tenant que diseño y construyo de principio a fin, del
+          modelo de datos al despliegue.
+        </p>
+      </div>
+      <div className="cards">
+        {projects.map((p, i) => (
+          <a className="card" key={p.id} href={`/proyectos/${p.id}`}>
+            <div className="card-top">
+              <span>proyectos/{p.id}</span>
+              <span>{pad(i)}</span>
+            </div>
+            <h3>{p.name}</h3>
+            <span className="tagline">
+              {p.tagline} · {p.status}
+            </span>
+            <p className="summary">{p.summary}</p>
+            <div className="card-foot">
+              <ul className="tags" aria-label={`Tecnologías de ${p.name}`}>
+                {p.stack.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+              <span className="card-link">
+                caso de estudio <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+        <div className="card card-cta">
+          <div className="card-top">$ ./nuevo-proyecto.sh</div>
+          <h3>¿Tienes un sistema que construir o escalar?</h3>
+          <a className="btn btn-light" href={`mailto:${profile.email}`}>
+            Conversemos <span aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
