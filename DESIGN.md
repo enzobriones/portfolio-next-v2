@@ -1,6 +1,6 @@
 # Diseño del portafolio
 
-Dirección visual "modernist": fondo claro `#f3f2f2`, tinta `#201e1d`, un único acento rojo `#ec3013`, grilla de 12 columnas, reglas de 2 px, sin radios ni sombras, y estética de terminal (`$ ls ./proyectos`). Fuentes Archivo e IBM Plex Mono vía `next/font/google`.
+Dirección visual "modernist": fondo claro `#f3f2f2`, tinta `#201e1d`, un único acento azul pastel `#9cc3f5`, grilla de 12 columnas, reglas de 2 px, sin radios ni sombras, y estética de terminal (`$ ls ./proyectos`). Fuentes Archivo e IBM Plex Mono vía `next/font/google`.
 
 Páginas: Home (`/`), un caso de estudio por proyecto (`/proyectos/[id]`) y Sobre mí en formato man page (`/sobre-mi`). Los proyectos viven en `lib/projects.ts` y el perfil en `lib/profile.ts`.
 
