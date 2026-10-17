@@ -3,13 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/portfolio/header";
 import { Contact } from "@/components/portfolio/contact";
-import { getProject, projects } from "@/lib/projects";
+import { caseStudies, getProject } from "@/lib/projects";
 
 type Props = { params: Promise<{ id: string }> };
 
 export const dynamicParams = false;
 
-export const generateStaticParams = () => projects.map((p) => ({ id: p.id }));
+export const generateStaticParams = () => caseStudies.map((p) => ({ id: p.id }));
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject((await params).id);
@@ -22,8 +22,8 @@ export default async function CaseStudy({ params }: Props) {
   const { id } = await params;
   const project = getProject(id);
   if (!project) notFound();
-  const index = projects.indexOf(project);
-  const next = projects[(index + 1) % projects.length];
+  const index = caseStudies.indexOf(project);
+  const next = caseStudies[(index + 1) % caseStudies.length];
 
   return (
     <div id="top">
@@ -72,7 +72,7 @@ export default async function CaseStudy({ params }: Props) {
             <section className="case-context" id="contexto">
               <h2>Contexto</h2>
               <div>
-                {project.context.map((text) => (
+                {(project.context ?? []).map((text) => (
                   <p key={text}>{text}</p>
                 ))}
               </div>
@@ -81,7 +81,7 @@ export default async function CaseStudy({ params }: Props) {
               <h2>Arquitectura</h2>
               <figure className="figure">
                 <ol className="flow">
-                  {project.architecture.flatMap((node, i) => [
+                  {(project.architecture ?? []).flatMap((node, i) => [
                     i > 0 && <i key={`a${i}`} aria-hidden="true" />,
                     <li key={node.name} className={node.external ? "ext" : ""}>
                       <small>{node.label}</small>
@@ -94,7 +94,7 @@ export default async function CaseStudy({ params }: Props) {
             </section>
             <section id="decisiones">
               <h2 style={{ marginBottom: 24 }}>Decisiones</h2>
-              {project.decisions.map((d, i) => (
+              {(project.decisions ?? []).map((d, i) => (
                 <div className="decision" key={d.title}>
                   <b>{String(i + 1).padStart(2, "0")}</b>
                   <h3>{d.title}</h3>
